@@ -12,9 +12,10 @@
 %>
 <html>
 <head>
+    <base href="<%=basePath%>"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>发布新投票</title>
-    <link type="text/css" rel="stylesheet" href="/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="<%=path%>/css/style.css" />
     <script type="text/javascript">
         var isIE = !!document.all;
         function AddOption()
@@ -52,7 +53,7 @@
 
 
 <div id="header" class="wrap" data-genuitec-lp-enabled="false" data-genuitec-file-id="wc3-5" data-genuitec-path="/VoteSite/WebRoot/top.jsp">
-    <img src="/images/logo.gif" />
+    <img src="<%=path%>/images/logo.gif" />
 </div>
 <div id="navbar" class="wrap">
     <div class="profile">
@@ -92,7 +93,7 @@
 
                 <dt></dt>
                 <dd class="button">
-                    <input type="image" src="/images/button_submit.gif" />
+                    <input type="image" src="images/button_submit.gif" />
                     <a href="javascript:;" onclick="AddOption()">增加选项</a>
                     <a href="Subject!list.action">取消操作</a>
                 </dd>

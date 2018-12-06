@@ -14,12 +14,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>投票列表</title>
-    <link type="text/css" rel="stylesheet" href="/vote/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="<%=path%>/css/style.css" />
     <script>!function(e){var c={nonSecure:"8123",secure:"8124"},t={nonSecure:"http://",secure:"https://"},r={nonSecure:"127.0.0.1",secure:"gapdebug.local.genuitec.com"},n="https:"===window.location.protocol?"secure":"nonSecure";script=e.createElement("script"),script.type="text/javascript",script.async=!0,script.src=t[n]+r[n]+":"+c[n]+"/codelive-assets/bundle.js",e.getElementsByTagName("head")[0].appendChild(script)}(document);</script></head>
 <body>
 
 <div id="header" class="wrap" data-genuitec-lp-enabled="false" data-genuitec-file-id="wc4-5" data-genuitec-path="/vote/WebRoot/WEB-INF/pages/top.jsp">
-    <img src="/vote/images/logo.gif" />
+    <img src="<%=path%>/images/logo.gif" />
 </div>
 <div id="navbar" class="wrap">
     <div class="profile">

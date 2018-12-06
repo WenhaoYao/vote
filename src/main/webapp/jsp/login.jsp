@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -14,7 +15,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <link type="text/css" rel="stylesheet" href="/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="<%=path%>/css/style.css" />
     <script type="text/javascript">
         window.onload = function(){
             var input = document.getElementById("loginBox").getElementsByTagName("input");
@@ -40,8 +41,8 @@
     </script>
     <script>!function(e){var c={nonSecure:"8123",secure:"8124"},t={nonSecure:"http://",secure:"https://"},r={nonSecure:"127.0.0.1",secure:"gapdebug.local.genuitec.com"},n="https:"===window.location.protocol?"secure":"nonSecure";script=e.createElement("script"),script.type="text/javascript",script.async=!0,script.src=t[n]+r[n]+":"+c[n]+"/codelive-assets/bundle.js",e.getElementsByTagName("head")[0].appendChild(script)}(document);</script></head>
 <body>
-<div id="header" class="wrap" data-genuitec-lp-enabled="false" data-genuitec-file-id="wc3-3" data-genuitec-path="/VoteSite/WebRoot/login.jsp">
-    <img src="images/logo.gif" />
+<div id="header" class="wrap" data-genuitec-lp-enabled="false" data-genuitec-file-id="wc3-3" data-genuitec-path="/jsp/login.jsp">
+    <img src="<%=path%>/images/logo.gif" />
 </div>
 <div id="login" class="wrap">
     <div class="main">
