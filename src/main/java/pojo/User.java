@@ -12,9 +12,11 @@ public class User {
     private Long id;
     private String name;
     private String password;
+
+    private String confirmPassword;
+
     private String nickName;
     private int online;
-
     public Long getId() {
         return id;
     }
@@ -37,6 +39,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     public String getNickName() {

@@ -67,19 +67,20 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
         ArrayList<java.io.Serializable> list = new ArrayList<>();
         StringBuilder buffer = new StringBuilder();
         Object[] objects = new Object[3];
+        ArrayList params = new ArrayList();
         UserQueryModel userQueryModel = (UserQueryModel) queryModel;
         buffer.append("select * from t_user where 1=1 ");
         if(userQueryModel.getName() != null && userQueryModel.getName().trim().length() > 0){
             buffer.append(" and name=?");
-            objects[0] = userQueryModel.getName();
+            params.add(userQueryModel.getName());
         }
         if (userQueryModel.getPassword() != null && userQueryModel.getPassword().trim().length() > 0){
             buffer.append(" and pwd=?");
-            objects[1] = userQueryModel.getPassword();
+            params.add(userQueryModel.getPassword());
         }
         if (userQueryModel.getOnline() > 0){
             buffer.append(" online=?");
-            objects[2] = userQueryModel.getOnline();
+            params.add(userQueryModel.getOnline());
         }
         list.add(buffer.toString());
         list.add(objects);
