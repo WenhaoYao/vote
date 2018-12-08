@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author YaoWenHao
+ * @author yaowenhao
  * @Title: ${NAME}
  * @ProjectName vote
  * @Description: TODO
- * @date 2018/12/6 9:17
+ * @date 2018/12/8 15:47
  */
-@WebServlet(name = "RegisterServlet", urlPatterns = "/RegisterServlet")
-public class RegisterServlet extends HttpServlet {
+@WebServlet(name = "LoginServlet", urlPatterns = "/LoginServlet")
+public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
@@ -23,6 +23,6 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("jsp/register.jsp").forward(request, response);
+        request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
     }
 }

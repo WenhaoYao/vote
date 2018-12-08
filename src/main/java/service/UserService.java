@@ -14,5 +14,5 @@ public interface UserService {
 
     int register(User user) throws RuleException;
 
-    int login(User user);
+    int login(User user) throws RuleException;
 }

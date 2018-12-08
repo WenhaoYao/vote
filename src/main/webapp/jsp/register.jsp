@@ -5,8 +5,8 @@
   Time: 9:13
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -33,14 +33,15 @@
 <div id="register" class="box">
     <h2>新用户注册</h2>
     <div class="content">
-        <form method="post" action="/VoteSite/doRegister">
+        <form method="post" action="<%=path%>/DoRegisterServlet">
             <dl>
                 <dt>用户名：</dt>
-                <dd><input type="text" class="input-text" name="name" value=""/></dd>
+                <dd><input type="text" class="input-text" name="name" value="${user.name}"/></dd>
                 <dt>密码：</dt>
                 <dd><input type="password" class="input-text" name="pwd" value=""/></dd>
                 <dt>确认密码：</dt>
                 <dd><input type="password" class="input-text" name="confirmPwd" value=""/></dd>
+                ${requestScope.errorMessage}
                 <dt></dt>
                 <dd><input type="submit" class="input-button" name="submit" value="" /></dd>
             </dl>

@@ -52,7 +52,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 
     @Override
     public T findOne(T t, Class<T> clazz) throws Exception {
-        List list = getDeleteSql(t);
+        List list = getFindOneSql(t);
         String sql = (String) list.get(0);
         Object[] objects = (Object[]) list.get(1);
         return queryUtil.query(sql, new BeanHandler<>(clazz), objects);

@@ -5,7 +5,7 @@
   Time: 9:09
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String path = request.getContextPath();
@@ -53,16 +53,17 @@
         </div>
         <div class="login">
             <h2>用户登录</h2>
-            <form method="post" action="">
+            <form method="post" action="<%=path%>/DoLoginServlet">
                 <dl id="loginBox">
                     <dt>用户名：</dt>
-                    <dd><input type="text" class="input-text" name="name"  value="1990"/></dd>
+                    <dd><input type="text" class="input-text" name="name"  value="${user.name}"/></dd>
                     <dt>密　码：</dt>
-                    <dd><input type="password" class="input-text" name="pwd"  value="123456"/></dd>
+                    <dd><input type="password" class="input-text" name="pwd"  value=""/></dd>
+                    ${requestScope.errorMessage}
                     <dt></dt>
                     <dd><input type="checkbox"  name="remember"  value="1"/>10天内免登录</dd>
                     <dt></dt>
-                    <dd><input type="submit" class="input-button" name="submit" value="登录" /> <a href="">新用户注册</a></dd>
+                    <dd><input type="submit" class="input-button" name="submit" value="登录" /> <a href="<%=path%>/RegisterServlet">新用户注册</a></dd>
                 </dl>
             </form>
             <div class="error"></div>

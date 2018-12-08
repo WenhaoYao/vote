@@ -64,4 +64,16 @@ public class User {
     public void setOnline(int online) {
         this.online = online;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", confirmPassword='" + confirmPassword + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", online=" + online +
+                '}';
+    }
 }

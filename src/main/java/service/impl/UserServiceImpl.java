@@ -1,5 +1,6 @@
 package service.impl;
 
+import dao.UserDao;
 import dao.impl.BaseDaoImpl;
 import dao.impl.UserDaoImpl;
 import exception.RuleException;
@@ -27,11 +28,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int register(User user) throws RuleException {
-        if (user.getName() == null && user.getName().trim().length() == 0) {
+        if (user.getName() == null || user.getName().trim().length() == 0) {
             logger.error("username cannot be null");
             throw new RuleException("用户名不能为空");
         }
-        if (user.getPassword() == null && user.getPassword().length() == 0) {
+        if (user.getPassword() == null || user.getPassword().length() == 0) {
             logger.error("password cannot be null");
             throw new RuleException("密码不能为空");
         }
@@ -48,7 +49,6 @@ public class UserServiceImpl implements UserService {
             }
             user.setOnline(1);
             user.setPassword(MD5Class.stringToMd5(user.getPassword()));
-            System.out.println(user.getPassword());
             return userDao.insert(user);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -56,7 +56,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int login(User user) {
-        return 0;
+    public int login(User user) throws RuleException {
+        if (user.getName() == null || user.getName().length() == 0){
+            throw new RuleException("用户名不能为空");
+        }
+        if (user.getPassword() == null || user.getPassword().length() == 0) {
+            throw new RuleException("密码不能为空");
+        }
+        String password = MD5Class.stringToMd5(user.getPassword());
+        try {
+            User user_1 = userDao.findOne(user, User.class);
+            if (user_1 == null){
+                throw new RuleException("用户未注册");
+            }
+            if (!password.equals(user_1.getPassword())){
+                throw new RuleException("用户名或者密码错误");
+            }
+            user_1.setOnline(1);
+            return userDao.update(user_1);
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
 }

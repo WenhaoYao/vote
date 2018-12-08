@@ -24,4 +24,11 @@ public class UserDaoImplTest {
         System.out.println(userDao.insert(user));
     }
 
+    @Test
+    public void TestFindOne() throws Exception {
+        User user = new User();
+        user.setName("yaowenhao");
+        System.out.println(userDao.findOne(user, User.class).toString());
+    }
+
 }

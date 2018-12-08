@@ -19,7 +19,7 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 
     @Override
     public List getInserSql(User user) {
-        String sql = "insert into t_user (name, pwd, online) values (?, ?, ?)";
+        String sql = "insert into t_user (name, password, online) values (?, ?, ?)";
         Object[] objects = {user.getName(), user.getPassword(), user.getOnline()};
         List<java.io.Serializable> list = new ArrayList<>();
         list.add(sql);
@@ -29,8 +29,8 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 
     @Override
     public List getUpdateSql(User user) {
-        String sql = "update t_user (name, pwd, online) values (?, ?, ?)";
-        Object[] objects = {user.getName(), user.getPassword(), user.getOnline()};
+        String sql = "update t_user set name=?, password=?, online=? where id=?";
+        Object[] objects = {user.getName(), user.getPassword(), user.getOnline(), user.getId()};
         List<java.io.Serializable> list = new ArrayList<>();
         list.add(sql);
         list.add(objects);
@@ -49,8 +49,8 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 
     @Override
     public List getFindOneSql(User user) {
-        String sql = "select * from t_user where id = ?";
-        Object[] objects = {user.getId()};
+        String sql = "select * from t_user where name = ?";
+        Object[] objects = {user.getName()};
         List<java.io.Serializable> list = new ArrayList<>();
         list.add(sql);
         list.add(objects);
@@ -75,7 +75,7 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
             params.add(userQueryModel.getName());
         }
         if (userQueryModel.getPassword() != null && userQueryModel.getPassword().trim().length() > 0){
-            buffer.append(" and pwd=?");
+            buffer.append(" and password=?");
             params.add(userQueryModel.getPassword());
         }
         if (userQueryModel.getOnline() > 0){
@@ -83,7 +83,7 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
             params.add(userQueryModel.getOnline());
         }
         list.add(buffer.toString());
-        list.add(objects);
+        list.add(params.toArray());
         return list;
     }
 }
