@@ -63,17 +63,16 @@ public class UserServiceImpl implements UserService {
         if (user.getPassword() == null || user.getPassword().length() == 0) {
             throw new RuleException("密码不能为空");
         }
-        String password = MD5Class.stringToMd5(user.getPassword());
         try {
-            User user_1 = userDao.findOne(user, User.class);
-            if (user_1 == null){
+            User userTemp = userDao.findOne(user, User.class);
+            if (userTemp == null){
                 throw new RuleException("用户未注册");
             }
-            if (!password.equals(user_1.getPassword())){
+            if (!user.getPassword().equals(userTemp.getPassword())){
                 throw new RuleException("用户名或者密码错误");
             }
-            user_1.setOnline(1);
-            return userDao.update(user_1);
+            userTemp.setOnline(1);
+            return userDao.update(userTemp);
         } catch (Exception e){
             throw new RuntimeException(e);
         }

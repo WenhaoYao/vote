@@ -4,9 +4,11 @@ import exception.RuleException;
 import pojo.User;
 import service.UserService;
 import service.impl.UserServiceImpl;
+import util.MD5Class;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,6 +28,7 @@ public class DoLoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = new User();
+        int isRemember = 0;
         ArrayList<Object> list = new ArrayList<>();
         UserService service = new UserServiceImpl();
         Enumeration enumeration = request.getParameterNames();
@@ -34,15 +37,27 @@ public class DoLoginServlet extends HttpServlet {
             list.add(request.getParameter(paramName));
         }
         user.setName((String) list.get(0));
-        user.setPassword((String) list.get(1));
+        user.setPassword(MD5Class.stringToMd5((String) list.get(1)));
+        String remember = request.getParameter("remember");
+        if (remember != null){
+            isRemember = 1;
+        }
         try {
             service.login(user);
             request.getSession().setAttribute("user", user);
+            if(isRemember == 1){
+                Cookie cookie = new Cookie("name", user.getName());
+                Cookie cookie1 = new Cookie("password", user.getPassword());
+                cookie.setMaxAge(864000);
+                cookie1.setMaxAge(864000);
+                response.addCookie(cookie);
+                response.addCookie(cookie1);
+            }
             request.getRequestDispatcher("/jsp/list.jsp").forward(request, response);
         } catch (RuleException e) {
             request.setAttribute("user", user);
             request.setAttribute("errorMessage", e.getMessage());
-            request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
+            request.getRequestDispatcher( "jsp/login.jsp").forward(request, response);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

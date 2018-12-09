@@ -63,7 +63,7 @@
                     <dt></dt>
                     <dd><input type="checkbox"  name="remember"  value="1"/>10天内免登录</dd>
                     <dt></dt>
-                    <dd><input type="submit" class="input-button" name="submit" value="登录" /> <a href="<%=path%>/RegisterServlet">新用户注册</a></dd>
+                    <dd><input type="submit" class="input-button" value="登录" /> <a href="<%=path%>/RegisterServlet">新用户注册</a></dd>
                 </dl>
             </form>
             <div class="error"></div>
