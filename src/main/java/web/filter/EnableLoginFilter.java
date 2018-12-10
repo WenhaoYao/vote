@@ -52,6 +52,10 @@ public class EnableLoginFilter implements Filter {
         int isLoginOrRegister = 0;
         HttpSession session = request.getSession();
         String urlString = request.getRequestURI();
+        if (urlString.endsWith(".css") || urlString.endsWith(".gif") || urlString.endsWith(".jpg")){
+            chain.doFilter(request, response);
+            return;
+        }
 //        判断是否为登录注册界面
         for (String param :
                 params) {

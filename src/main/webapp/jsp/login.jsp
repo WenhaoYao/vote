@@ -13,36 +13,42 @@
 %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
-    <link type="text/css" rel="stylesheet" href="<%=path%>/css/style.css" />
+    <title>登录页面</title>
+    <link type="text/css" rel="stylesheet" href="<%=path%>/css/style.css"/>
     <script type="text/javascript">
-        window.onload = function(){
+        window.onload = function () {
             var input = document.getElementById("loginBox").getElementsByTagName("input");
-            for(i=0; i<input.length; i++) {
+            for (i = 0; i < input.length; i++) {
                 var type = input[i].getAttribute("type");
-                if(type == "text" || type == "password") {
-                    input[i].onfocus = function(){
+                if (type == "text" || type == "password") {
+                    input[i].onfocus = function () {
                         this.className += " input-text-over";
                     }
-                    input[i].onblur = function(){
+                    input[i].onblur = function () {
                         this.className = this.className.replace(/input-text-over/, "");
                     }
-                } else if(type == "submit") {
-                    input[i].onmouseover = function(){
+                } else if (type == "submit") {
+                    input[i].onmouseover = function () {
                         this.className += " input-submit-over";
                     }
-                    input[i].onmouseout = function(){
+                    input[i].onmouseout = function () {
                         this.className = this.className.replace(/input-button-over/, "");
                     }
                 }
             }
         }
     </script>
-    <script>!function(e){var c={nonSecure:"8123",secure:"8124"},t={nonSecure:"http://",secure:"https://"},r={nonSecure:"127.0.0.1",secure:"gapdebug.local.genuitec.com"},n="https:"===window.location.protocol?"secure":"nonSecure";script=e.createElement("script"),script.type="text/javascript",script.async=!0,script.src=t[n]+r[n]+":"+c[n]+"/codelive-assets/bundle.js",e.getElementsByTagName("head")[0].appendChild(script)}(document);</script></head>
+    <script>!function (e) {
+        var c = {nonSecure: "8123", secure: "8124"}, t = {nonSecure: "http://", secure: "https://"},
+            r = {nonSecure: "127.0.0.1", secure: "gapdebug.local.genuitec.com"},
+            n = "https:" === window.location.protocol ? "secure" : "nonSecure";
+        script = e.createElement("script"), script.type = "text/javascript", script.async = !0, script.src = t[n] + r[n] + ":" + c[n] + "/codelive-assets/bundle.js", e.getElementsByTagName("head")[0].appendChild(script)
+    }(document);</script>
+</head>
 <body>
-<div id="header" class="wrap" data-genuitec-lp-enabled="false" data-genuitec-file-id="wc3-3" data-genuitec-path="/jsp/login.jsp">
-    <img src="<%=path%>/images/logo.gif" />
+<div id="header" class="wrap" data-genuitec-lp-enabled="false" data-genuitec-file-id="wc3-3"
+     data-genuitec-path="<%=path%>/jsp/login.jsp">
+    <img src="<%=path%>/images/logo.gif"/>
 </div>
 <div id="login" class="wrap">
     <div class="main">
@@ -56,14 +62,15 @@
             <form method="post" action="<%=path%>/DoLoginServlet">
                 <dl id="loginBox">
                     <dt>用户名：</dt>
-                    <dd><input type="text" class="input-text" name="name"  value="${user.name}"/></dd>
+                    <dd><input type="text" class="input-text" name="name" value="${user.name}"/></dd>
                     <dt>密　码：</dt>
-                    <dd><input type="password" class="input-text" name="pwd"  value=""/></dd>
+                    <dd><input type="password" class="input-text" name="pwd" value=""/></dd>
                     ${requestScope.errorMessage}
                     <dt></dt>
-                    <dd><input type="checkbox"  name="remember"  value="1"/>10天内免登录</dd>
+                    <dd><input type="checkbox" name="remember" value="1"/>10天内免登录</dd>
                     <dt></dt>
-                    <dd><input type="submit" class="input-button" value="登录" /> <a href="<%=path%>/RegisterServlet">新用户注册</a></dd>
+                    <dd><input type="submit" class="input-button" value="登录"/> <a
+                            href="<%=path%>/RegisterServlet">新用户注册</a></dd>
                 </dl>
             </form>
             <div class="error"></div>
