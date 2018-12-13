@@ -4,6 +4,7 @@ import dao.UserDao;
 import pojo.BaseQueryModel;
 import pojo.User;
 import pojo.UserQueryModel;
+import util.ReturnSqlUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,40 +22,28 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
     public List getInserSql(User user) {
         String sql = "insert into t_user (name, password, online) values (?, ?, ?)";
         Object[] objects = {user.getName(), user.getPassword(), user.getOnline()};
-        List<java.io.Serializable> list = new ArrayList<>();
-        list.add(sql);
-        list.add(objects);
-        return list;
+        return ReturnSqlUtil.returnSql(sql, objects);
     }
 
     @Override
     public List getUpdateSql(User user) {
         String sql = "update t_user set name=?, password=?, online=? where id=?";
         Object[] objects = {user.getName(), user.getPassword(), user.getOnline(), user.getId()};
-        List<java.io.Serializable> list = new ArrayList<>();
-        list.add(sql);
-        list.add(objects);
-        return list;
+        return ReturnSqlUtil.returnSql(sql, objects);
     }
 
     @Override
     public List getDeleteSql(User user) {
         String sql = "delete from t_user where id = ?";
         Object[] objects = {user.getId()};
-        List<java.io.Serializable> list = new ArrayList<>();
-        list.add(sql);
-        list.add(objects);
-        return list;
+        return ReturnSqlUtil.returnSql(sql, objects);
     }
 
     @Override
     public List getFindOneSql(User user) {
         String sql = "select * from t_user where name = ?";
         Object[] objects = {user.getName()};
-        List<java.io.Serializable> list = new ArrayList<>();
-        list.add(sql);
-        list.add(objects);
-        return list;
+        return ReturnSqlUtil.returnSql(sql, objects);
     }
 
     @Override

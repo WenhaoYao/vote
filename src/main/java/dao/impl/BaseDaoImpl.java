@@ -4,6 +4,7 @@ import dao.BaseDao;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 import pojo.BaseQueryModel;
 import util.QueryUtil;
 
@@ -42,6 +43,12 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
         String sql = (String) list.get(0);
         Object[] objects = (Object[]) list.get(1);
         return (int) queryUtil.update(sql, objects);
+    }
+
+    @Override
+    public Long findId() throws Exception {
+        String sql = "SELECT LAST_INSERT_ID()";
+        return queryUtil.query(sql, new ScalarHandler<Long>());
     }
 
     @Override

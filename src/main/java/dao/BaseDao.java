@@ -19,6 +19,8 @@ public interface  BaseDao<T> {
 
     int delete(T t) throws Exception;
 
+    Long findId() throws Exception;
+
     List<T> findAll(Class<T> clazz) throws Exception;
 
     T findOne(T t, Class<T> clazz) throws Exception;
