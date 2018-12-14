@@ -1,6 +1,6 @@
 package dao;
 
-import pojo.BaseQueryModel;
+import querymodel.BaseQueryModel;
 
 import java.util.List;
 

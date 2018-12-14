@@ -1,4 +1,6 @@
-package pojo;
+package querymodel;
+
+import pojo.User;
 
 /**
  * @author YaoWenHao

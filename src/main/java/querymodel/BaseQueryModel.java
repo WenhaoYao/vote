@@ -1,4 +1,4 @@
-package pojo;
+package querymodel;
 
 /**
  * @author YaoWenHao

@@ -1,11 +1,10 @@
 package dao.impl;
 
 import dao.OptionDao;
-import pojo.BaseQueryModel;
+import querymodel.BaseQueryModel;
 import pojo.Option;
 import util.ReturnSqlUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

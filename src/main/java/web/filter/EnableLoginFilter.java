@@ -4,7 +4,7 @@ import dao.BaseDao;
 import dao.impl.UserDaoImpl;
 import exception.RuleException;
 import pojo.User;
-import pojo.UserQueryModel;
+import querymodel.UserQueryModel;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

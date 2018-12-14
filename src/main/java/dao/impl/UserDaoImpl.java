@@ -1,9 +1,9 @@
 package dao.impl;
 
 import dao.UserDao;
-import pojo.BaseQueryModel;
+import querymodel.BaseQueryModel;
 import pojo.User;
-import pojo.UserQueryModel;
+import querymodel.UserQueryModel;
 import util.ReturnSqlUtil;
 
 import java.util.ArrayList;

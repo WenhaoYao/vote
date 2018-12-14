@@ -1,16 +1,14 @@
 package service.impl;
 
-import dao.UserDao;
 import dao.impl.BaseDaoImpl;
 import dao.impl.UserDaoImpl;
 import exception.RuleException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pojo.User;
-import pojo.UserQueryModel;
+import querymodel.UserQueryModel;
 import service.UserService;
 import util.MD5Class;
-import web.filter.EncodingFilter;
 
 import java.util.List;
 
