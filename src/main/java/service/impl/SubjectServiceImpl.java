@@ -4,6 +4,7 @@ import dao.OptionDao;
 import dao.SubjectDao;
 import dao.impl.OptionDaoImpl;
 import dao.impl.SubjectDaoImpl;
+import exception.RuleException;
 import pojo.Option;
 import pojo.Subject;
 import pojo.User;
@@ -27,18 +28,35 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public void add(Subject subject, User user) throws Exception {
-        Long currentTime = System.currentTimeMillis();
-        subject.setStartTime(currentTime);
-        subject.setEndTime(currentTime + 24 * 60 * 60 * 1000);
-        subject.setUser(user);
-        subject.setId(subjectDao.findId());
-        int i = 1;
-        for (Option option : subject.getOptionList()) {
-            option.setIdx(i++);
-            option.getSubject().setId(subject.getId());
-
-            optionDao.insert(option);
+    public void add(Subject subject, User user) throws RuleException {
+        if (subject.getTitle() == null || subject.getTitle().trim().length() == 0){
+            throw new RuleException("标题不能为空");
         }
+        if(subject.getNumber() == null){
+            throw new RuleException("请选择类型");
+        }
+        for (Option option:
+                subject.getOptionList()) {
+            if (option == null || "".equals(option.getContent())){
+                throw new RuleException("请将选项填写完整");
+            }
+        }
+        try{
+            Long currentTime = System.currentTimeMillis();
+            subject.setStartTime(currentTime);
+            subject.setEndTime(currentTime + 24 * 60 * 60 * 1000);
+            subject.setUser(user);
+            subjectDao.insert(subject);
+            subject.setId(subjectDao.findId().longValue());
+            int i = 1;
+            for (Option option : subject.getOptionList()) {
+                option.setIdx(i++);
+                option.setSubject(subject);
+                optionDao.insert(option);
+            }
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
     }
 }
