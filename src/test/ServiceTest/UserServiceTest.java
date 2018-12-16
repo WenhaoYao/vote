@@ -1,4 +1,4 @@
-package UserServiceTest;
+package ServiceTest;
 
 import exception.RuleException;
 import org.junit.Test;

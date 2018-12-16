@@ -1,4 +1,4 @@
-package UserDaoTest;
+package DaoTest;
 
 import dao.impl.BaseDaoImpl;
 import dao.impl.UserDaoImpl;
