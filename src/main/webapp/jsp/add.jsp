@@ -107,7 +107,7 @@
                 <dd class="button">
                     <input type="image" src="<%=path%>/images/button_submit.gif"/>
                     <a href="javascript:" onclick="AddOption()">增加选项</a>
-                    <a href="<%=path%>">取消操作</a>
+                    <a href="<%=path%>/jsp/list.jsp">取消操作</a>
                 </dd>
             </dl>
         </form>
