@@ -8,6 +8,7 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 import querymodel.BaseQueryModel;
 import util.QueryUtil;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -46,9 +47,9 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
     }
 
     @Override
-    public Long findId() throws Exception {
+    public BigInteger findId() throws Exception {
         String sql = "SELECT LAST_INSERT_ID()";
-        return queryUtil.query(sql, new ScalarHandler<Long>());
+        return queryUtil.query(sql, new ScalarHandler<BigInteger>());
     }
 
     @Override

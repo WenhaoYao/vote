@@ -2,6 +2,7 @@ package dao;
 
 import querymodel.BaseQueryModel;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public interface  BaseDao<T> {
 
     int delete(T t) throws Exception;
 
-    Long findId() throws Exception;
+    BigInteger findId() throws Exception;
 
     List<T> findAll(Class<T> clazz) throws Exception;
 
