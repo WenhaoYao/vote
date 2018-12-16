@@ -53,7 +53,7 @@ public class DoLoginServlet extends HttpServlet {
                 response.addCookie(cookie);
                 response.addCookie(cookie1);
             }
-            request.getRequestDispatcher("/jsp/list.jsp").forward(request, response);
+            request.getRequestDispatcher("jsp/list.jsp").forward(request, response);
         } catch (RuleException e) {
             request.setAttribute("user", user);
             request.setAttribute("errorMessage", e.getMessage());
