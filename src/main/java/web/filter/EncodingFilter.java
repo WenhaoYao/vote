@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import util.MyRequestUtil;
 
 import javax.servlet.FilterConfig;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +18,7 @@ import java.io.IOException;
  * @Description: TODO
  * @date 2018/11/26 23:28
  */
-@javax.servlet.annotation.WebFilter(filterName = "EncodingFilter"
+@WebFilter(filterName = "EncodingFilter"
         , urlPatterns = "/*"
         , initParams = {@WebInitParam(name = "encoding", value = "utf-8")})
 public class EncodingFilter implements javax.servlet.Filter {

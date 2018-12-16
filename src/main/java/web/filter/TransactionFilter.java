@@ -14,11 +14,13 @@ import java.sql.SQLException;
  * @Description: TODO
  * @date 2018/12/13 9:13
  */
-@WebFilter(filterName = "TransactionFilter")
+@WebFilter(filterName = "TransactionFilter", urlPatterns = "/*")
 public class TransactionFilter implements Filter {
+    @Override
     public void destroy() {
     }
 
+    @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         try {
             JdbcUtil.beginTransaction();
@@ -39,8 +41,8 @@ public class TransactionFilter implements Filter {
         }
     }
 
+    @Override
     public void init(FilterConfig config) throws ServletException {
-
     }
 
 }
