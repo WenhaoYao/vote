@@ -36,5 +36,9 @@ public class SubjectServiceImplTest {
     @Test
     public void list() throws Exception{
         List<Subject> list = subjectService.list();
+        for (Subject subject:
+             list) {
+            System.out.println(subject.toString());
+        }
     }
 }
