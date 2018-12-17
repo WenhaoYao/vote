@@ -12,6 +12,8 @@ public class Option {
     private Long id;
     private String content;
     private int idx;
+    private long subjectId;
+
     private Subject subject;
 
     public Long getId() {
@@ -36,6 +38,14 @@ public class Option {
 
     public void setIdx(int idx) {
         this.idx = idx;
+    }
+
+    public long getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(long sujectId) {
+        this.subjectId = sujectId;
     }
 
     public Subject getSubject() {

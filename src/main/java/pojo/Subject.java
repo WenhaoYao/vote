@@ -17,6 +17,7 @@ public class Subject {
     private Integer number;
     private long startTime;
     private long endTime;
+    private long userId;
     private User user;
     private List<Option> optionList;
 
@@ -63,6 +64,14 @@ public class Subject {
         this.endTime = endTime;
     }
 
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
     public User getUser() {
         return user;
     }
@@ -82,5 +91,19 @@ public class Subject {
     public Subject() {
         super();
         this.optionList = new ArrayList<>();
+    }
+
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", number=" + number +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", userId=" + userId +
+                ", user=" + user +
+                ", optionList=" + optionList +
+                '}';
     }
 }
