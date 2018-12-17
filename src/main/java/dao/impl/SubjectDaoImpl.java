@@ -45,6 +45,11 @@ public class SubjectDaoImpl extends BaseDaoImpl<Subject> implements SubjectDao {
     }
 
     @Override
+    public List getNumbersSql(BaseQueryModel queryModel) {
+        return null;
+    }
+
+    @Override
     public List getFindConditionSql(BaseQueryModel queryModel) {
         return null;
     }

@@ -26,5 +26,7 @@ public interface  BaseDao<T> {
 
     T findOne(T t, Class<T> clazz) throws Exception;
 
+    Long findNumbers(BaseQueryModel queryModel) throws Exception;
+
     List<T> findByCondition(BaseQueryModel queryModel, Class<T> clazz) throws Exception;
 }

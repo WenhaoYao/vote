@@ -47,6 +47,22 @@ public class OptionDaoImpl extends BaseDaoImpl<Option> implements OptionDao {
         return null;
     }
 
+    @Override
+    public List getNumbersSql(BaseQueryModel queryModel) {
+        ArrayList<Object> list = new ArrayList<>();
+        StringBuilder buffer = new StringBuilder();
+        ArrayList<Object> params = new ArrayList<>();
+        OptionQueryModel optionQueryModel = (OptionQueryModel) queryModel;
+        buffer.append("select count(*) from t_option where 1=1 ");
+        if (optionQueryModel.getSubject() != null){
+            buffer.append(" and subjectId=?");
+            params.add(optionQueryModel.getSubject().getId());
+        }
+        list.add(buffer.toString());
+        list.add(params.toArray());
+        return list;
+    }
+
 
     @Override
     public List getFindConditionSql(BaseQueryModel queryModel) {

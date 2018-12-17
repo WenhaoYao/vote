@@ -8,7 +8,6 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 import querymodel.BaseQueryModel;
 import util.QueryUtil;
 
-import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -68,6 +67,14 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
     }
 
     @Override
+    public Long findNumbers(BaseQueryModel queryModel) throws Exception{
+        List list = getNumbersSql(queryModel);
+        String sql = (String) list.get(0);
+        Object[] objects = (Object[]) list.get(1);
+        return queryUtil.query(sql, new ScalarHandler<Long>(), objects);
+    }
+
+    @Override
     public List<T> findByCondition(BaseQueryModel queryModel, Class<T> clazz) throws Exception {
         List list = getFindConditionSql(queryModel);
         String sql = (String) list.get(0);
@@ -84,6 +91,8 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
     public abstract List getFindOneSql(T t);
 
     public abstract String getFindAllSql();
+
+    public abstract List getNumbersSql(BaseQueryModel queryModel);
 
     public abstract List getFindConditionSql(BaseQueryModel queryModel);
 }

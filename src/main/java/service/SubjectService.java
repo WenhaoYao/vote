@@ -17,4 +17,6 @@ public interface SubjectService {
     void add(Subject subject, User user) throws RuleException;
 
     List<Subject> list() throws Exception;
+
+    Subject getVoteSubject(long id) throws Exception;
 }

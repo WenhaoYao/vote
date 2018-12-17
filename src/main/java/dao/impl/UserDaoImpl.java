@@ -53,6 +53,11 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
     }
 
     @Override
+    public List getNumbersSql(BaseQueryModel queryModel) {
+        return null;
+    }
+
+    @Override
     public List getFindConditionSql(BaseQueryModel queryModel) {
         ArrayList<Object> list = new ArrayList<>();
         StringBuilder buffer = new StringBuilder();

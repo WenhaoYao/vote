@@ -19,6 +19,7 @@ public class Subject {
     private long endTime;
     private long userId;
     private User user;
+    private Integer optionNumbers;
     private List<Option> optionList;
 
     public static final int SINGLE = 1;
@@ -78,6 +79,14 @@ public class Subject {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Integer getOptionNumbers() {
+        return optionNumbers;
+    }
+
+    public void setOptionNumbers(Integer optionNumbers) {
+        this.optionNumbers = optionNumbers;
     }
 
     public List<Option> getOptionList() {
