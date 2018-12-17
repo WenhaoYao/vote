@@ -12,8 +12,8 @@ import java.util.List;
  */
 public class ReturnSqlUtil {
 
-    public static List<java.io.Serializable> returnSql(String sql, Object[] objects){
-        List<java.io.Serializable> list = new ArrayList<>();
+    public static List returnSql(String sql, Object[] objects){
+        List<Object> list = new ArrayList<>();
         list.add(sql);
         list.add(objects);
         return list;

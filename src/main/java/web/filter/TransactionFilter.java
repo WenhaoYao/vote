@@ -34,7 +34,7 @@ public class TransactionFilter implements Filter {
             }
         } finally {
             try {
-                JdbcUtil.releaseConnection(null);
+                JdbcUtil.releaseConnection(JdbcUtil.getConnection());
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

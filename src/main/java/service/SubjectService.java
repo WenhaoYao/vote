@@ -3,6 +3,8 @@ package service;
 import pojo.Subject;
 import pojo.User;
 
+import java.util.List;
+
 /**
  * @author yaowenhao
  * @Title SubjectService
@@ -12,4 +14,6 @@ import pojo.User;
  */
 public interface SubjectService {
     void add(Subject subject, User user) throws Exception;
+
+    List<Subject> list() throws Exception;
 }

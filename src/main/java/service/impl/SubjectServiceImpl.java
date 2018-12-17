@@ -10,6 +10,8 @@ import pojo.Subject;
 import pojo.User;
 import service.SubjectService;
 
+import java.util.List;
+
 /**
  * @author yaowenhao
  * @Title SubjectServiceImpl
@@ -42,7 +44,7 @@ public class SubjectServiceImpl implements SubjectService {
             }
         }
         try{
-            Long currentTime = System.currentTimeMillis();
+            long currentTime = System.currentTimeMillis();
             subject.setStartTime(currentTime);
             subject.setEndTime(currentTime + 24 * 60 * 60 * 1000);
             subject.setUser(user);
@@ -58,5 +60,11 @@ public class SubjectServiceImpl implements SubjectService {
             throw new RuntimeException(e);
         }
 
+    }
+
+    @Override
+    public List<Subject> list() throws Exception {
+        List<Subject> subjectList = subjectDao.findAll(Subject.class);
+        return subjectList;
     }
 }

@@ -6,6 +6,8 @@ import pojo.User;
 import service.SubjectService;
 import service.impl.SubjectServiceImpl;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -29,5 +31,10 @@ public class SubjectServiceImplTest {
         User user = new User();
         user.setId((long) 10);
         subjectService.add(subject, user);
+    }
+
+    @Test
+    public void list() throws Exception{
+        List<Subject> list = subjectService.list();
     }
 }
