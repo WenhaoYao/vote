@@ -54,10 +54,9 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 
     @Override
     public List getFindConditionSql(BaseQueryModel queryModel) {
-        ArrayList<java.io.Serializable> list = new ArrayList<>();
+        ArrayList<Object> list = new ArrayList<>();
         StringBuilder buffer = new StringBuilder();
-        Object[] objects = new Object[3];
-        ArrayList params = new ArrayList();
+        ArrayList<Object> params = new ArrayList<>();
         UserQueryModel userQueryModel = (UserQueryModel) queryModel;
         buffer.append("select * from t_user where 1=1 ");
         if(userQueryModel.getName() != null && userQueryModel.getName().trim().length() > 0){
