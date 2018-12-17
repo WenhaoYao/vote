@@ -6,6 +6,7 @@ import pojo.User;
 import querymodel.UserQueryModel;
 import util.ReturnSqlUtil;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

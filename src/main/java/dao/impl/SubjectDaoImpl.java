@@ -5,6 +5,7 @@ import querymodel.BaseQueryModel;
 import pojo.Subject;
 import util.ReturnSqlUtil;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -39,7 +40,8 @@ public class SubjectDaoImpl extends BaseDaoImpl<Subject> implements SubjectDao {
 
     @Override
     public String getFindAllSql() {
-        return null;
+        String sql = "select * from t_subject";
+        return sql;
     }
 
     @Override

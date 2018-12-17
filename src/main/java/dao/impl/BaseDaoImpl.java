@@ -8,6 +8,7 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 import querymodel.BaseQueryModel;
 import util.QueryUtil;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
 

@@ -5,6 +5,7 @@ import querymodel.BaseQueryModel;
 import pojo.Option;
 import util.ReturnSqlUtil;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
