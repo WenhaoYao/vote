@@ -45,7 +45,7 @@ public class DoAddServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         try{
             subjectService.add(subject, user);
-            response.sendRedirect("jsp/list.jsp");
+            response.sendRedirect(request.getContextPath() + "/list");
         }catch (RuleException e){
             request.setAttribute("subject", subject);
             request.setAttribute("errorMessage", e.getMessage());

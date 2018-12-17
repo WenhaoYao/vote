@@ -40,7 +40,7 @@ public class SubjectDaoImpl extends BaseDaoImpl<Subject> implements SubjectDao {
 
     @Override
     public String getFindAllSql() {
-        String sql = "select * from t_subject";
+        String sql = "select id, title, number, starttime, endtime, userId from t_subject";
         return sql;
     }
 
