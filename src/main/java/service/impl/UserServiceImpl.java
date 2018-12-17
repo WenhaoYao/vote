@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import pojo.User;
 import querymodel.UserQueryModel;
 import service.UserService;
-import util.MD5Class;
+import util.Md5Class;
 
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
                 throw new RuleException("用户已被注册");
             }
             user.setOnline(1);
-            user.setPassword(MD5Class.stringToMd5(user.getPassword()));
+            user.setPassword(Md5Class.stringToMd5(user.getPassword()));
             return userDao.insert(user);
         } catch (Exception e) {
             throw new RuntimeException(e);

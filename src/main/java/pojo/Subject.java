@@ -20,6 +20,9 @@ public class Subject {
     private User user;
     private List<Option> optionList;
 
+    public static final int SINGLE = 1;
+    public static final int MULTI = 2;
+
     public Long getId() {
         return id;
     }

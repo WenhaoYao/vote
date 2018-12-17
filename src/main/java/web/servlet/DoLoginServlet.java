@@ -4,7 +4,7 @@ import exception.RuleException;
 import pojo.User;
 import service.UserService;
 import service.impl.UserServiceImpl;
-import util.MD5Class;
+import util.Md5Class;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,7 +37,7 @@ public class DoLoginServlet extends HttpServlet {
             list.add(request.getParameter(paramName));
         }
         user.setName((String) list.get(0));
-        user.setPassword(MD5Class.stringToMd5((String) list.get(1)));
+        user.setPassword(Md5Class.stringToMd5((String) list.get(1)));
         String remember = request.getParameter("remember");
         if (remember != null){
             isRemember = 1;

@@ -23,6 +23,7 @@ public class MyRequestUtil extends HttpServletRequestWrapper {
         super(request);
     }
 
+    @Override
     public String getParameter(String name){
         String result = null;
         try {
@@ -30,8 +31,7 @@ public class MyRequestUtil extends HttpServletRequestWrapper {
             result = new String(bytes, encode);
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
-        } finally {
-            return result;
         }
+        return result;
     }
 }
