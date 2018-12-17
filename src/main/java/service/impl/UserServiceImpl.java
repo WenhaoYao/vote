@@ -54,25 +54,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int login(User user) throws RuleException {
-        if (user.getName() == null || user.getName().length() == 0){
+    public User login(User user) throws Exception {
+        if (user.getName() == null || user.getName().trim().length() == 0){
             throw new RuleException("用户名不能为空");
         }
-        if (user.getPassword() == null || user.getPassword().length() == 0) {
+        if (user.getPassword() == null || user.getPassword().trim().length() == 0) {
             throw new RuleException("密码不能为空");
         }
-        try {
-            User userTemp = userDao.findOne(user, User.class);
-            if (userTemp == null){
-                throw new RuleException("用户未注册");
-            }
-            if (!user.getPassword().equals(userTemp.getPassword())){
-                throw new RuleException("用户名或者密码错误");
-            }
-            userTemp.setOnline(1);
-            return userDao.update(userTemp);
-        } catch (Exception e){
-            throw new RuntimeException(e);
+        User userTemp = userDao.findOne(user, User.class);
+        if (userTemp == null){
+            throw new RuleException("用户未注册");
         }
+        if (!user.getPassword().equals(userTemp.getPassword())){
+            throw new RuleException("用户名或者密码错误");
+        }
+        userTemp.setOnline(1);
+        userDao.update(userTemp);
+        return userTemp;
     }
 }

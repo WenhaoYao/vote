@@ -43,8 +43,7 @@ public class DoLoginServlet extends HttpServlet {
             isRemember = 1;
         }
         try {
-            service.login(user);
-            request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute("user", service.login(user));
             if(isRemember == 1){
                 Cookie cookie = new Cookie("name", user.getName());
                 Cookie cookie1 = new Cookie("password", user.getPassword());
@@ -53,7 +52,7 @@ public class DoLoginServlet extends HttpServlet {
                 response.addCookie(cookie);
                 response.addCookie(cookie1);
             }
-            response.sendRedirect("jsp/list.jsp");
+            response.sendRedirect(request.getContextPath() + "/list");
         } catch (RuleException e) {
             request.setAttribute("user", user);
             request.setAttribute("errorMessage", e.getMessage());

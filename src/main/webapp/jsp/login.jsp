@@ -62,7 +62,7 @@
             <form method="post" action="<%=path%>/DoLoginServlet">
                 <dl id="loginBox">
                     <dt>用户名：</dt>
-                    <dd><input type="text" class="input-text" name="name" value="${user.name}"/></dd>
+                    <dd><input type="text" class="input-text" name="name" value="${requestScope.user.name}"/></dd>
                     <dt>密　码：</dt>
                     <dd><input type="password" class="input-text" name="pwd" value=""/></dd>
                     ${requestScope.errorMessage}
