@@ -35,7 +35,9 @@ public class SubjectDaoImpl extends BaseDaoImpl<Subject> implements SubjectDao {
 
     @Override
     public List getFindOneSql(Subject subject) {
-        return null;
+        String sql = "select * from t_subject where id=?";
+        Object[] objects = {subject.getId()};
+        return ReturnSqlUtil.returnSql(sql, objects);
     }
 
     @Override

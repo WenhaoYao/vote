@@ -73,7 +73,6 @@ public class SubjectServiceImpl implements SubjectService {
                  subjectList) {
                 queryModel.setSubject(subject);
                 subject.setOptionNumbers(optionDao.findNumbers(queryModel).intValue());
-//                subject.setOptionList(optionDao.findByCondition(queryModel, Option.class));
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -82,8 +81,12 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public Subject getVoteSubject(long id) throws Exception {
-        return null;
+    public Subject getVoteSubject(Subject subject) throws Exception {
+        OptionQueryModel queryModel = new OptionQueryModel();
+        subject = subjectDao.findOne(subject, Subject.class);
+        queryModel.setSubject(subject);
+        subject.setOptionList(optionDao.findByCondition(queryModel, Option.class));
+        return subject;
     }
 
 }
