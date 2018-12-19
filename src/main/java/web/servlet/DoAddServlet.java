@@ -23,7 +23,7 @@ import java.util.Enumeration;
  * @Description: TODO
  * @date 2018/12/15 22:13
  */
-@WebServlet(name = "DoAddServlet", urlPatterns = "/Add")
+@WebServlet(name = "DoAddServlet", urlPatterns = "/doAdd")
 public class DoAddServlet extends HttpServlet {
 
     @Override

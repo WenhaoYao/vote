@@ -9,6 +9,7 @@ import pojo.Option;
 import pojo.Subject;
 import pojo.User;
 import querymodel.OptionQueryModel;
+import querymodel.SubjectQueryModel;
 import service.SubjectService;
 
 import java.util.List;
@@ -87,6 +88,21 @@ public class SubjectServiceImpl implements SubjectService {
         queryModel.setSubject(subject);
         subject.setOptionList(optionDao.findByCondition(queryModel, Option.class));
         return subject;
+    }
+
+    @Override
+    public List<Subject> listByUser(User user) throws Exception {
+        List<Subject> subjectList;
+        SubjectQueryModel subjectQueryModel = new SubjectQueryModel();
+        subjectQueryModel.setUser(user);
+        subjectList = subjectDao.findByCondition(subjectQueryModel, Subject.class);
+        OptionQueryModel optionQueryModel = new OptionQueryModel();
+        for (Subject subject:
+             subjectList) {
+            optionQueryModel.setSubject(subject);
+            subject.setOptionNumbers(optionDao.findNumbers(optionQueryModel).intValue());
+        }
+        return subjectList;
     }
 
 }

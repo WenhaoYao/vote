@@ -1,5 +1,7 @@
 package web.servlet;
 
+import pojo.Subject;
+import pojo.User;
 import service.SubjectService;
 import service.impl.SubjectServiceImpl;
 
@@ -12,32 +14,33 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * @author yaowenhao
- * @Title ${NAME}
+ * @author YaoWenHao
+ * @Title: ${NAME}
  * @ProjectName vote
  * @Description: TODO
- * @date 2018/12/17 14:35
+ * @date 2018/12/19 14:17
  */
-@WebServlet(name = "DoListServlet", urlPatterns = "/list")
-public class DoListServlet extends HttpServlet {
+@WebServlet(name = "ModifyServlet", urlPatterns = "/modify")
+public class ModifyServlet extends HttpServlet {
 
-    private SubjectService subjectService;
+    SubjectService subjectService;
 
-    public DoListServlet() {
+    public ModifyServlet() {
         this.subjectService = new SubjectServiceImpl();
     }
 
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User user = (User) request.getSession().getAttribute("user");
+        Subject subject = new Subject();
+        subject.setUser(user);
         try {
-            List subjectList = subjectService.list();
-            request.setAttribute("subjectList", subjectList);
-            request.getRequestDispatcher("jsp/list.jsp").forward(request, response);
+            List<Subject> subjectListByUser = subjectService.listByUser(user);
+            request.setAttribute("subjectList", subjectListByUser);
+            request.getRequestDispatcher("jsp/modify.jsp").forward(request, response);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

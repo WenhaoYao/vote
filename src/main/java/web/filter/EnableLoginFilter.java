@@ -70,7 +70,7 @@ public class EnableLoginFilter implements Filter {
             if (session.getAttribute(sessionName) == null) {
                 chain.doFilter(request, response);
             } else {
-                response.sendRedirect(request.getContextPath() + "/jsp/list.jsp");
+                response.sendRedirect(request.getContextPath() + "/list");
             }
         } else {
 //            当前访问的不是登录注册界面

@@ -1,11 +1,12 @@
 package dao.impl;
 
 import dao.SubjectDao;
-import querymodel.BaseQueryModel;
 import pojo.Subject;
+import querymodel.BaseQueryModel;
+import querymodel.SubjectQueryModel;
 import util.ReturnSqlUtil;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public class SubjectDaoImpl extends BaseDaoImpl<Subject> implements SubjectDao {
     @Override
     public List getInserSql(Subject subject) {
         String sql = "insert into t_subject (title, number, starttime, endtime, userId) values (?, ?, ?, ?, ?)";
-        Object[] objects = {subject.getTitle(), subject.getNumber(), subject.getStartTime(),subject.getEndTime(), subject.getUser().getId()};
+        Object[] objects = {subject.getTitle(), subject.getNumber(), subject.getStartTime(), subject.getEndTime(), subject.getUser().getId()};
         return ReturnSqlUtil.returnSql(sql, objects);
     }
 
@@ -53,6 +54,22 @@ public class SubjectDaoImpl extends BaseDaoImpl<Subject> implements SubjectDao {
 
     @Override
     public List getFindConditionSql(BaseQueryModel queryModel) {
-        return null;
+        ArrayList<Object> list = new ArrayList<>();
+        StringBuilder buffer = new StringBuilder();
+        ArrayList<Object> params = new ArrayList<>();
+        SubjectQueryModel subjectQueryModel = (SubjectQueryModel) queryModel;
+        buffer.append("select * from t_subject where 1=1 ");
+        if (subjectQueryModel.getUser() != null) {
+            buffer.append("and userId=? ");
+            params.add(subjectQueryModel.getUser().getId());
+        }
+        if (subjectQueryModel.getTitle() != null
+                && subjectQueryModel.getTitle().trim().length() > 0) {
+            buffer.append("and title=? ");
+            params.add(subjectQueryModel.getTitle());
+        }
+        list.add(buffer.toString());
+        list.add(params.toArray());
+        return list;
     }
 }

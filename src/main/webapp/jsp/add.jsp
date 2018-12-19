@@ -80,7 +80,7 @@
      data-genuitec-path="<%=path%>/jsp/add.jsp">
     <h2>添加新投票</h2>
     <div class="content">
-        <form method="post" action="<%=path%>/Add">
+        <form method="post" action="<%=path%>/doAdd">
             <dl>
                 <dt>投票内容：</dt>
                 <dd>

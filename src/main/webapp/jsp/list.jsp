@@ -42,7 +42,7 @@
         </c:choose>
         <span class="return"><a href="<%=path%>/list">返回列表</a></span>
         <span class="addnew"><a href="<%=path%>/jsp/add.jsp">添加新投票</a></span>
-        <span class="modify"><a href="<%=path%>/jsp/modify.jsp">维护</a></span>
+        <span class="modify"><a href="<%=path%>/modify">维护</a></span>
     </div>
     <div class="search">
         <form method="post" action="/vote/search">
@@ -57,13 +57,13 @@
     <h2>投票列表</h2>
     <ul class="list">
         <c:choose>
-            <c:when test="${empty sessionScope.subjectList}">
+            <c:when test="${empty requestScope.subjectList}">
                 <li class="odd">
                     <p class="info">无投票项目</p>
                 </li>
             </c:when>
             <c:otherwise>
-                <c:forEach items="${sessionScope.subjectList}" var="subject">
+                <c:forEach items="${requestScope.subjectList}" var="subject">
                     <li class="odd">
                         <h4>
                             <a href="<%=path%>/vote?id=${subject.id}">${subject.title}</a>

@@ -41,4 +41,15 @@ public class SubjectServiceImplTest {
             System.out.println(subject.toString());
         }
     }
+
+    @Test
+    public void listByUser() throws Exception{
+        User user = new User();
+        user.setId((long) 10);
+        List<Subject> list = subjectService.listByUser(user);
+        for (Subject subject:
+                list) {
+            System.out.println(subject.toString());
+        }
+    }
 }
