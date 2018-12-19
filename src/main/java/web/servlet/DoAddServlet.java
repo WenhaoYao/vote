@@ -26,14 +26,22 @@ import java.util.Enumeration;
 @WebServlet(name = "DoAddServlet", urlPatterns = "/doAdd")
 public class DoAddServlet extends HttpServlet {
 
+    private SubjectService subjectService;
+    public DoAddServlet() {
+        this.subjectService = new SubjectServiceImpl();
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SubjectService subjectService = new SubjectServiceImpl();
+        String id = request.getParameter("id");
         String title = request.getParameter("title");
         Integer number = request.getParameter("voteType") != null
                 ? Integer.parseInt(request.getParameter("voteType")) : null;
         String[] options = request.getParameterValues("options");
         Subject subject = new Subject();
+        if (!"".equals(id)){
+            subject.setId(Long.valueOf(id));
+        }
         subject.setTitle(title);
         subject.setNumber(number);
         for (String optionContent:
@@ -44,7 +52,11 @@ public class DoAddServlet extends HttpServlet {
         }
         User user = (User) request.getSession().getAttribute("user");
         try{
-            subjectService.add(subject, user);
+            if (subject.getId() == null || subject.getId() == 0){
+                subjectService.update(subject);
+            }else {
+                subjectService.add(subject, user);
+            }
             response.sendRedirect(request.getContextPath() + "/list");
         }catch (RuleException e){
             request.setAttribute("subject", subject);

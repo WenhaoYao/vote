@@ -112,6 +112,7 @@ public class Subject {
                 ", endTime=" + endTime +
                 ", userId=" + userId +
                 ", user=" + user +
+                ", optionNumbers=" + optionNumbers +
                 ", optionList=" + optionList +
                 '}';
     }

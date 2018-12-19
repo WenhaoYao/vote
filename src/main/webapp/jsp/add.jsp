@@ -79,39 +79,39 @@
 <div id="voteManage" class="box" data-genuitec-lp-enabled="false" data-genuitec-file-id="wc3-0"
      data-genuitec-path="<%=path%>/jsp/add.jsp">
     <h2>添加新投票</h2>
-    <div class="content">
-        <form method="post" action="<%=path%>/doAdd">
-            <dl>
-                <dt>投票内容：</dt>
-                <dd>
-                    <input type="hidden" name="id" value=""/>
-                    <input type="text" class="input-text" name="title" value="${subject.title}"/>
-                </dd>
-                <dt>投票类型：</dt>
-                <dd>
-                    <input type="radio" name="voteType" value="1" <c:if test="${subject.number eq '1'}">checked="checked"</c:if>/>单选
-                    <input type="radio" name="voteType" value="2" <c:if test="${subject.number eq '2'}">checked="checked"</c:if>/>多选
-                </dd>
-                <dt>投票选项：</dt>
+    <form method="post" action="<%=path%>/doAdd">
+        <dl>
+            <dt>投票内容：</dt>
+            <dd>
+                <input type="hidden" name="id" value="${subject.id}"/>
+                <input type="text" class="input-text" name="title" value="${subject.title}"/>
+            </dd>
+            <dt>投票类型：</dt>
+            <dd>
+                <input type="radio" name="voteType" value="1"
+                       <c:if test="${subject.number eq '1'}">checked="checked"</c:if>/>单选
+                <input type="radio" name="voteType" value="2"
+                       <c:if test="${subject.number eq '2'}">checked="checked"</c:if>/>多选
+            </dd>
+            <dt>投票选项：</dt>
 
-                <dd id="voteoptions">
-                    <p><input type="text" class="input-text" name="options"/></p>
-                    <p><input type="text" class="input-text" name="options"/></p>
-                </dd>
-                <dt></dt>
-                <dd style="color: red">
-                    ${requestScope.errorMessage}
-                </dd>
+            <dd id="voteoptions">
+                <p><input type="text" class="input-text" name="options"/></p>
+                <p><input type="text" class="input-text" name="options"/></p>
+            </dd>
+            <dt></dt>
+            <dd style="color: red">
+                ${requestScope.errorMessage}
+            </dd>
 
-                <dt></dt>
-                <dd class="button">
-                    <input type="image" src="<%=path%>/images/button_submit.gif"/>
-                    <a href="javascript:" onclick="AddOption()">增加选项</a>
-                    <a href="<%=path%>/jsp/list.jsp">取消操作</a>
-                </dd>
-            </dl>
-        </form>
-    </div>
+            <dt></dt>
+            <dd class="button">
+                <input type="image" src="<%=path%>/images/button_submit.gif"/>
+                <a href="javascript:" onclick="AddOption()">增加选项</a>
+                <a href="<%=path%>/jsp/list.jsp">取消操作</a>
+            </dd>
+        </dl>
+    </form>
 </div>
 <div id="footer" class="wrap">
     艾特优软件 &copy; 版权所有

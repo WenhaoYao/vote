@@ -26,7 +26,9 @@ public class SubjectDaoImpl extends BaseDaoImpl<Subject> implements SubjectDao {
 
     @Override
     public List getUpdateSql(Subject subject) {
-        return null;
+        String sql = "update t_subject set title=?, number=? where id=?";
+        Object[] objects = {subject.getTitle(), subject.getNumber(), subject.getId()};
+        return ReturnSqlUtil.returnSql(sql, objects);
     }
 
     @Override

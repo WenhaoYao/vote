@@ -21,4 +21,6 @@ public interface SubjectService {
     Subject getVoteSubject(Subject subject) throws Exception;
 
     List<Subject> listByUser(User user) throws Exception;
+
+    void update(Subject subject) throws Exception;
 }

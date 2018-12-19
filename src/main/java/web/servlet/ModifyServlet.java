@@ -29,10 +29,12 @@ public class ModifyServlet extends HttpServlet {
         this.subjectService = new SubjectServiceImpl();
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
         Subject subject = new Subject();

@@ -34,7 +34,9 @@ public class OptionDaoImpl extends BaseDaoImpl<Option> implements OptionDao {
 
     @Override
     public List getDeleteSql(Option option) {
-        return null;
+        String sql = "delete from t_option where subjectId=?";
+        Object[] objects = {option.getSubject().getId()};
+        return ReturnSqlUtil.returnSql(sql, objects);
     }
 
     @Override

@@ -105,4 +105,35 @@ public class SubjectServiceImpl implements SubjectService {
         return subjectList;
     }
 
+    @Override
+    public void update(Subject subject) throws RuleException {
+        if (subject.getTitle() == null || subject.getTitle().trim().length() == 0){
+            throw new RuleException("标题不能为空");
+        }
+        if(subject.getNumber() == null){
+            throw new RuleException("请选择类型");
+        }
+        for (Option option:
+                subject.getOptionList()) {
+            if (option == null || "".equals(option.getContent())){
+                throw new RuleException("请将选项填写完整");
+            }
+        }
+        Option option = new Option();
+        option.setSubject(subject);
+        try {
+            optionDao.delete(option);
+            subjectDao.update(subject);
+            int i = 1;
+            for (Option o : subject.getOptionList()) {
+                o.setIdx(i++);
+                o.setSubject(subject);
+                optionDao.insert(o);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 }
