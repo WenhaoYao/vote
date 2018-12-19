@@ -96,8 +96,16 @@
             <dt>投票选项：</dt>
 
             <dd id="voteoptions">
-                <p><input type="text" class="input-text" name="options"/></p>
-                <p><input type="text" class="input-text" name="options"/></p>
+                <c:choose>
+                    <c:when test="${empty subject.optionList}">
+                        <p><input type="text" class="input-text" name="options"/></p>
+                        <p><input type="text" class="input-text" name="options"/></p>
+                    </c:when>
+                </c:choose>
+                <c:forEach items="${subject.optionList}" var="option">
+                    <p><input type="text" class="input-text" name="options" value="${option.content}"/></p>
+                </c:forEach>
+
             </dd>
             <dt></dt>
             <dd style="color: red">

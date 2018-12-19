@@ -53,9 +53,9 @@ public class DoAddServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         try{
             if (subject.getId() == null || subject.getId() == 0){
-                subjectService.update(subject);
-            }else {
                 subjectService.add(subject, user);
+            }else {
+                subjectService.update(subject);
             }
             response.sendRedirect(request.getContextPath() + "/list");
         }catch (RuleException e){
