@@ -56,6 +56,30 @@ public class RecordDaoImpl extends BaseDaoImpl<Record> implements RecordDao {
         ArrayList<Object> params = new ArrayList<>();
         RecordQueryModel recordQueryModel = (RecordQueryModel) queryModel;
         buffer.append("select count(*) from t_record where 1=1 ");
+        if (recordQueryModel.getSubject() != null) {
+            buffer.append("and subjectId=? ");
+            params.add(recordQueryModel.getSubject().getId());
+        }
+        if (recordQueryModel.getUser() != null) {
+            buffer.append("and userId=? ");
+            params.add(recordQueryModel.getUser().getId());
+        }
+        if (recordQueryModel.getOption() != null) {
+            buffer.append("and optionId=? ");
+            params.add(recordQueryModel.getOption().getId());
+        }
+        list.add(buffer.toString());
+        list.add(params.toArray());
+        return list;
+    }
+
+    @Override
+    public List getFindConditionSql(BaseQueryModel queryModel) {
+        ArrayList<Object> list = new ArrayList<>();
+        StringBuilder buffer = new StringBuilder();
+        ArrayList<Object> params = new ArrayList<>();
+        RecordQueryModel recordQueryModel = (RecordQueryModel) queryModel;
+        buffer.append("select * from t_record where 1=1 ");
         if (recordQueryModel.getUser() != null) {
             buffer.append("and userId=? ");
             params.add(recordQueryModel.getUser().getId());
@@ -71,10 +95,5 @@ public class RecordDaoImpl extends BaseDaoImpl<Record> implements RecordDao {
         list.add(buffer.toString());
         list.add(params.toArray());
         return list;
-    }
-
-    @Override
-    public List getFindConditionSql(BaseQueryModel queryModel) {
-        return null;
     }
 }

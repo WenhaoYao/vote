@@ -70,8 +70,11 @@
                         </c:otherwise>
                     </c:choose>
                 </ol>
-                <p class="voteView"><input type="image" src="<%=path%>/images/button_vote.gif"/><a
-                        href="/vote/m/view"><img src="<%=path%>/images/button_view.gif"/></a></p>
+                <p style="color: red">${requestScope.duplicateWarn}</p>
+                <p class="voteView">
+                    <c:if test="${empty requestScope.duplicateWarn}">
+                        <input type="image" src="<%=path%>/images/button_vote.gif"/></c:if>
+                    <a href="/vote/m/view"><img src="<%=path%>/images/button_view.gif"/></a></p>
             </form>
 
             <div class="error"></div>
