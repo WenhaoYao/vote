@@ -35,7 +35,7 @@ public class SubjectServiceImplTest {
 
     @Test
     public void list() throws Exception{
-        List<Subject> list = subjectService.list();
+        List<Subject> list = subjectService.list(null);
         for (Subject subject:
              list) {
             System.out.println(subject.toString());
@@ -46,7 +46,7 @@ public class SubjectServiceImplTest {
     public void listByUser() throws Exception{
         User user = new User();
         user.setId((long) 10);
-        List<Subject> list = subjectService.listByUser(user);
+        List<Subject> list = subjectService.list(user);
         for (Subject subject:
                 list) {
             System.out.println(subject.toString());

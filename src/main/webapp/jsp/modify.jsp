@@ -61,7 +61,7 @@
                             <em><a href="<%=path%>/doModify?id=${subject.id}">维护</a></em>
                             <a href="<%=path%>/doModify?id=${subject.id}">${subject.title}</a>
                         </h4>
-                        <p class="info">共有 ${subject.optionNumbers}个选项，已有1 个网友参与了投票。</p>
+                        <p class="info">共有 ${subject.optionNumbers}个选项，已有${subject.recordNumbers} 个网友参与了投票。</p>
                     </li>
                 </c:forEach>
             </c:otherwise>

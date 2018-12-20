@@ -16,11 +16,9 @@ import java.util.List;
 public interface SubjectService {
     void add(Subject subject, User user) throws RuleException;
 
-    List<Subject> list() throws Exception;
-
     Subject getVoteSubject(Subject subject) throws Exception;
 
-    List<Subject> listByUser(User user) throws Exception;
+    List<Subject> list(User user) throws Exception;
 
     void update(Subject subject) throws Exception;
 }

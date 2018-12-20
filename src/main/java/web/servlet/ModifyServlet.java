@@ -40,7 +40,7 @@ public class ModifyServlet extends HttpServlet {
         Subject subject = new Subject();
         subject.setUser(user);
         try {
-            List<Subject> subjectListByUser = subjectService.listByUser(user);
+            List<Subject> subjectListByUser = subjectService.list(user);
             request.setAttribute("subjectList", subjectListByUser);
             request.getRequestDispatcher("jsp/modify.jsp").forward(request, response);
         } catch (Exception e) {

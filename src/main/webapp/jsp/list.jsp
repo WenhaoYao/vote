@@ -69,7 +69,7 @@
                             <a href="<%=path%>/vote?id=${subject.id}">${subject.title}</a>
                         </h4>
                         <div class="join"><a href="<%=path%>/vote?id=${subject.id}">我要参与</a></div>
-                        <p class="info">共有 ${subject.optionNumbers}个选项，已有 1个网友参与了投票。</p>
+                        <p class="info">共有 ${subject.optionNumbers}个选项，已有 ${subject.recordNumbers}个网友参与了投票。</p>
                     </li>
                 </c:forEach>
             </c:otherwise>

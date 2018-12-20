@@ -21,6 +21,7 @@ public class Subject {
     private User user;
     private Integer optionNumbers;
     private List<Option> optionList;
+    private Integer recordNumbers;
 
     public static final int SINGLE = 1;
     public static final int MULTI = 2;
@@ -95,6 +96,14 @@ public class Subject {
 
     public void setOptionList(List<Option> optionList) {
         this.optionList = optionList;
+    }
+
+    public Integer getRecordNumbers() {
+        return recordNumbers;
+    }
+
+    public void setRecordNumbers(Integer recordNumbers) {
+        this.recordNumbers = recordNumbers;
     }
 
     public Subject() {

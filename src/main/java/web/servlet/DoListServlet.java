@@ -1,6 +1,8 @@
 package web.servlet;
 
+import service.RecordService;
 import service.SubjectService;
+import service.impl.RecordServiceImpl;
 import service.impl.SubjectServiceImpl;
 
 import javax.servlet.ServletException;
@@ -22,9 +24,11 @@ import java.util.List;
 public class DoListServlet extends HttpServlet {
 
     private SubjectService subjectService;
+    private RecordService recordService;
 
     public DoListServlet() {
         this.subjectService = new SubjectServiceImpl();
+        this.recordService = new RecordServiceImpl();
     }
 
     @Override
@@ -35,7 +39,7 @@ public class DoListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            List subjectList = subjectService.list();
+            List subjectList = subjectService.list(null);
             request.setAttribute("subjectList", subjectList);
             request.getRequestDispatcher("jsp/list.jsp").forward(request, response);
         } catch (Exception e) {

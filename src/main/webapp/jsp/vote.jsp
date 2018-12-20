@@ -46,25 +46,27 @@
 </div>
 
 <div id="vote" class="wrap" data-genuitec-lp-enabled="false" data-genuitec-file-id="wc4-6"
-     data-genuitec-path="/vote/WebRoot/WEB-INF/pages/vote.jsp">
+     data-genuitec-path="<%=path%>/jsp/vote.jsp">
     <h2>参与投票</h2>
     <ul class="list">
         <li>
             <h4>${requestScope.subject.title}</h4>
-            <p class="info">共有 ${fn:length(requestScope.subject.optionList)}个选项，已有1个网友参与了投票。</p>
-            <form method="post" action="<%=path%>/doVote">
+            <p class="info">共有 ${fn:length(requestScope.subject.optionList)}个选项，已有${subject.recordNumbers}个网友参与了投票。</p>
+            <form method="post" action="<%=path%>/doVote?id=${requestScope.subject.id}">
                 <input type="hidden" name="subjectId" value="${requestScope.subject.id}"/>
                 <ol>
                     <c:choose>
                         <c:when test="${requestScope.subject.number eq 1}">
                             <c:forEach items="${requestScope.subject.optionList}" var="option">
-                                <li><input type="radio" name="options" value="${option.idx}"/>${option.content}</li>
+                                <li><input type="radio" name="options" value="${option.id}"/>${option.content}</li>
                             </c:forEach>
+                            ${requestScope.errorMessage}
                         </c:when>
                         <c:otherwise>
                             <c:forEach items="${requestScope.subject.optionList}" var="option">
-                                <li><input type="checkbox" name="options" value="${option.idx}"/>${option.content}</li>
+                                <li><input type="checkbox" name="options" value="${option.id}"/>${option.content}</li>
                             </c:forEach>
+                            ${requestScope.errorMessage}
                         </c:otherwise>
                     </c:choose>
                 </ol>
