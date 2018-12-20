@@ -15,4 +15,6 @@ public interface UserService {
     int register(User user) throws RuleException;
 
     User login(User user) throws Exception;
+
+    void offline(User user) throws Exception;
 }

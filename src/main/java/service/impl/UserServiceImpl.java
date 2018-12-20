@@ -72,4 +72,10 @@ public class UserServiceImpl implements UserService {
         userDao.update(userTemp);
         return userTemp;
     }
+
+    @Override
+    public void offline(User user) throws Exception {
+        user.setOnline(0);
+        userDao.update(user);
+    }
 }

@@ -16,6 +16,7 @@ a:hover, a:active { text-decoration:underline; }
 #navbar .profile .addnew a { margin:0px 40px; background:url(../images/addnew.gif) left center no-repeat; padding-left:18px; }
 #navbar .profile .modify a { margin:0px 40px; background:url(../images/edit.gif) left center no-repeat; padding-left:18px; }
 #navbar .profile .return a { margin:0px 40px; background:url(../images/new.gif) left center no-repeat; padding-left:18px; }
+#navbar .profile .quit a { margin:0px 40px; background:url(../images/quit.ico) left center no-repeat; padding-left:18px; }
 
 #navbar .search { text-align:right; }
 #navbar .search input { margin:3px auto; vertical-align:middle; }
