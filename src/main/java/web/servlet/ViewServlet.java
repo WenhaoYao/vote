@@ -1,8 +1,6 @@
 package web.servlet;
 
-import exception.RuleException;
 import pojo.Subject;
-import pojo.User;
 import service.RecordService;
 import service.SubjectService;
 import service.impl.RecordServiceImpl;
@@ -14,42 +12,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author yaowenhao
  * @Title ${NAME}
  * @ProjectName vote
  * @Description: TODO
- * @date 2018/12/18 11:16
+ * @date 2018/12/20 16:25
  */
-@WebServlet(name = "DoVoteServlet", urlPatterns = "/doVote")
-public class DoVoteServlet extends HttpServlet {
+@WebServlet(name = "ViewServlet", urlPatterns = "/view")
+public class ViewServlet extends HttpServlet {
 
     private RecordService recordService;
     private SubjectService subjectService;
 
-    public DoVoteServlet() {
+    public ViewServlet() {
         this.recordService = new RecordServiceImpl();
-        this.subjectService = new SubjectServiceImpl();
+        subjectService = new SubjectServiceImpl();
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = (User)request.getSession().getAttribute("user");
         long subjectId = Long.parseLong(request.getParameter("id"));
-        Subject subject = new Subject();
-        subject.setId(subjectId);
-        String[] selections = request.getParameterValues("options");
-        try {
-            subject = subjectService.getVoteSubject(subject);
-            recordService.vote(subject, selections, user);
-            response.sendRedirect(request.getContextPath() + "/vote?id=" + subject.getId());
-        } catch (RuleException e) {
-            request.setAttribute("errorMessage", e.getMessage());
-            request.getRequestDispatcher("jsp/vote.jsp").forward(request, response);
-        } catch (Exception e){
-            throw new RuntimeException(e);
-        }
+        response.sendRedirect(request.getContextPath() + "/vote?id=" + subjectId);
     }
 
     @Override

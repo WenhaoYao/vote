@@ -13,7 +13,7 @@ import java.io.IOException;
  * @date 2018/11/26 23:44
  */
 @WebFilter(filterName = "ExceptionFilter"
-        , urlPatterns = "/*"
+        , urlPatterns = ""
         , initParams = {@WebInitParam(name = "errorPage", value = "500.jsp")})
 public class ExceptionFilter implements Filter {
 

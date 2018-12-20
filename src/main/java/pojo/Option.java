@@ -13,7 +13,7 @@ public class Option {
     private String content;
     private int idx;
     private long subjectId;
-
+    private long selectedNumbers;
     private Subject subject;
 
     public Long getId() {
@@ -54,5 +54,13 @@ public class Option {
 
     public void setSubject(Subject subject) {
         this.subject = subject;
+    }
+
+    public long getSelectedNumbers() {
+        return selectedNumbers;
+    }
+
+    public void setSelectedNumbers(long selectedNumbers) {
+        this.selectedNumbers = selectedNumbers;
     }
 }

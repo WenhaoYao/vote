@@ -58,23 +58,33 @@
                     <c:choose>
                         <c:when test="${requestScope.subject.number eq 1}">
                             <c:forEach items="${requestScope.subject.optionList}" var="option">
-                                <li><input type="radio" name="options" value="${option.id}"/>${option.content}</li>
+                                <li>
+                                    <input type="radio" name="options" value="${option.id}"/>${option.content}
+                                    <p style="color: #0066CC"><c:if test="${empty requestScope.voteWarn}">
+                                        已有${option.selectedNumbers} 人选择该选项
+                                    </c:if></p>
+                                </li>
                             </c:forEach>
                             ${requestScope.errorMessage}
                         </c:when>
                         <c:otherwise>
                             <c:forEach items="${requestScope.subject.optionList}" var="option">
-                                <li><input type="checkbox" name="options" value="${option.id}"/>${option.content}</li>
+                                <li><input type="checkbox" name="options" value="${option.id}"/>${option.content}
+                                <p style="color: #0066CC"><c:if test="${empty requestScope.voteWarn}">
+                                    已有${option.selectedNumbers} 人选择该选项
+                                </c:if></p>
+                                </li>
                             </c:forEach>
                             ${requestScope.errorMessage}
                         </c:otherwise>
                     </c:choose>
                 </ol>
+                <p style="color: red">${requestScope.voteWarn}</p>
                 <p style="color: red">${requestScope.duplicateWarn}</p>
                 <p class="voteView">
                     <c:if test="${empty requestScope.duplicateWarn}">
                         <input type="image" src="<%=path%>/images/button_vote.gif"/></c:if>
-                    <a href="/vote/m/view"><img src="<%=path%>/images/button_view.gif"/></a></p>
+                    <a href="<%=path%>/view?id=${subject.id}"><img src="<%=path%>/images/button_view.gif"/></a></p>
             </form>
 
             <div class="error"></div>

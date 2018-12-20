@@ -7,6 +7,7 @@ import pojo.Option;
 import pojo.Record;
 import pojo.Subject;
 import pojo.User;
+import querymodel.RecordQueryModel;
 import service.RecordService;
 
 import java.util.ArrayList;
@@ -51,5 +52,17 @@ public class RecordServiceImpl implements RecordService {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public Subject view(Subject subject) throws Exception {
+        RecordQueryModel recordQueryModel = new RecordQueryModel();
+        recordQueryModel.setSubject(subject);
+        for (Option option:
+             subject.getOptionList()) {
+            recordQueryModel.setOption(option);
+            option.setSelectedNumbers(recordDao.findNumbers(recordQueryModel));
+        }
+        return subject;
     }
 }

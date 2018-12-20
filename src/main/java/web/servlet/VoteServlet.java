@@ -1,7 +1,9 @@
 package web.servlet;
 
 import pojo.Subject;
+import service.RecordService;
 import service.SubjectService;
+import service.impl.RecordServiceImpl;
 import service.impl.SubjectServiceImpl;
 
 import javax.servlet.ServletException;
@@ -22,8 +24,11 @@ import java.io.IOException;
 public class VoteServlet extends HttpServlet {
 
     private SubjectService subjectService;
+    private RecordService recordService;
+
     public VoteServlet() {
         this.subjectService = new SubjectServiceImpl();
+        this.recordService = new RecordServiceImpl();
     }
 
     @Override
@@ -32,7 +37,7 @@ public class VoteServlet extends HttpServlet {
         Subject subject = new Subject();
         subject.setId(subjectId);
         try {
-            subject = subjectService.getVoteSubject(subject);
+            subject = recordService.view(subjectService.getVoteSubject(subject));
             request.setAttribute("subject", subject);
             request.getRequestDispatcher("/jsp/vote.jsp").forward(request, response);
         } catch (Exception e) {

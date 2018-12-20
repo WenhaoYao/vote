@@ -21,7 +21,9 @@ import java.util.List;
  * @Description: TODO
  * @date 2018/12/20 13:17
  */
-@WebFilter(filterName = "DuplicateFilter", urlPatterns = "/vote")
+@WebFilter(filterName = "DuplicateFilter"
+        , urlPatterns = "/vote"
+        , dispatcherTypes = {DispatcherType.REQUEST})
 public class DuplicateFilter implements Filter {
 
     @Override
@@ -30,7 +32,6 @@ public class DuplicateFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-        System.out.println("doFilter.............");
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
         RecordDao recordDao = new RecordDaoImpl();
@@ -44,9 +45,9 @@ public class DuplicateFilter implements Filter {
         try {
             List<Record> recordList = recordDao.findByCondition(recordQueryModel, Record.class);
             if (recordList == null || recordList.size() == 0){
+                request.setAttribute("voteWarn", "请先投票才能查看投票信息");
                 chain.doFilter(request, response);
             }else {
-                System.out.println("来了老弟？");
                 request.setAttribute("duplicateWarn", "请勿重复投票");
                 request.getRequestDispatcher("/vote?id=" + subjectId).forward(request, response);
             }

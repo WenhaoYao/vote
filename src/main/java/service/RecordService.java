@@ -13,4 +13,6 @@ import pojo.User;
  */
 public interface RecordService {
     void vote(Subject subject, String[] selections, User user) throws RuleException;
+
+    Subject view(Subject subject) throws Exception;
 }
