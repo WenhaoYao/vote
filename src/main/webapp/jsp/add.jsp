@@ -47,6 +47,28 @@
             var obj = a.parentNode;
             obj.parentNode.removeChild(obj);
         }
+
+    </script>
+    <script type="text/javascript">
+        function x() {
+            var p_options = document.getElementById("voteOptions-p");
+            alert("执行方法x" + p_options.length);
+            if (p_options.length > 2) {
+                alert(p_options.length);
+                for (var i = 2; i < p_options.length; i++) {
+                    var _a = document.createElement("a");
+                    _a.className = "del";
+                    _a.setAttribute("href", "javascript:;");
+                    if (isIE) {
+                        _a.attachEvent("onclick", DelOption);
+                    } else {
+                        _a.addEventListener("click", DelOption, false);
+                    }
+                    _a.appendChild(document.createTextNode("删除"));
+                    p_options.appendChild(_a);
+                }
+            }
+        }
     </script>
     <script>!function (e) {
         var c = {nonSecure: "8123", secure: "8124"}, t = {nonSecure: "http://", secure: "https://"},
@@ -56,8 +78,6 @@
     }(document);</script>
 </head>
 <body>
-
-
 <div id="header" class="wrap" data-genuitec-lp-enabled="false" data-genuitec-file-id="wc3-5"
      data-genuitec-path="/VoteSite/WebRoot/top.jsp">
     <img src="<%=path%>/images/logo.gif"/>
@@ -95,15 +115,20 @@
             </dd>
             <dt>投票选项：</dt>
 
-            <dd id="voteoptions">
+            <dd id="voteoptions" onload="x()">
                 <c:choose>
                     <c:when test="${empty subject.optionList}">
-                        <p><input type="text" class="input-text" name="options"/></p>
-                        <p><input type="text" class="input-text" name="options"/></p>
+                        <p id="voteOptions-p">
+                            <input type="text" class="input-text" name="options"/>
+                        </p>
+                        <p id="voteOptions-p">
+                            <input type="text" class="input-text" name="options"/>
+                        </p>
                     </c:when>
                 </c:choose>
                 <c:forEach items="${subject.optionList}" var="option">
-                    <p><input type="text" class="input-text" name="options" value="${option.content}"/></p>
+                    <p id="voteOptions-p"><input type="text" class="input-text" name="options"
+                                                              value="${option.content}"/></p>
                 </c:forEach>
 
             </dd>

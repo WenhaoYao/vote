@@ -33,7 +33,7 @@
     <div class="profile">
         您好，${sessionScope.user.name}
         <span class="return"><a href="<%=path%>/list">返回列表</a></span>
-        <span class="addnew"><a href="<%=path%>/doAdd">添加新投票</a></span>
+        <span class="addnew"><a href="<%=path%>/jsp/add.jsp">添加新投票</a></span>
         <span class="modify"><a href="<%=path%>/modify">维护</a></span>
     </div>
     <div class="search">
