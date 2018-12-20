@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author yaowenhao
@@ -41,9 +42,11 @@ public class DuplicateFilter implements Filter {
         recordQueryModel.setUser(user);
         recordQueryModel.setSubject(subject);
         try {
-            if (recordDao.findByCondition(recordQueryModel, Record.class) == null){
+            List<Record> recordList = recordDao.findByCondition(recordQueryModel, Record.class);
+            if (recordList == null || recordList.size() == 0){
                 chain.doFilter(request, response);
             }else {
+                System.out.println("来了老弟？");
                 request.setAttribute("duplicateWarn", "请勿重复投票");
                 request.getRequestDispatcher("/vote?id=" + subjectId).forward(request, response);
             }
