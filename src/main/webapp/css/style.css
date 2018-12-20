@@ -13,10 +13,10 @@ a:hover, a:active { text-decoration:underline; }
 .box .content { font-size:14px; padding:20px 40px; }
 #navbar { background:#dae8f5; border-top:4px solid #5184af; line-height:30px; height:30px; }
 #navbar .profile { float:left; padding:0px 10px; }
-#navbar .profile .addnew a { margin:0px 40px; background:url(../images/addnew.gif) left center no-repeat; padding-left:18px; }
-#navbar .profile .modify a { margin:0px 40px; background:url(../images/edit.gif) left center no-repeat; padding-left:18px; }
-#navbar .profile .return a { margin:0px 40px; background:url(../images/new.gif) left center no-repeat; padding-left:18px; }
-#navbar .profile .quit a { margin:0px 40px; background:url(../images/quit.ico) left center no-repeat; padding-left:18px; }
+#navbar .profile .addnew a { margin:0px 20px; background:url(../images/addnew.gif) left center no-repeat; padding-left:18px; }
+#navbar .profile .modify a { margin:0px 20px; background:url(../images/edit.gif) left center no-repeat; padding-left:18px; }
+#navbar .profile .return a { margin:0px 20px; background:url(../images/new.gif) left center no-repeat; padding-left:18px; }
+#navbar .profile .quit a { margin:0px 20px; background:url(../images/quit.ico) left center no-repeat; padding-left:18px; }
 
 #navbar .search { text-align:right; }
 #navbar .search input { margin:3px auto; vertical-align:middle; }
