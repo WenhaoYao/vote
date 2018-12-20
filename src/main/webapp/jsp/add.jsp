@@ -51,11 +51,9 @@
     </script>
     <script type="text/javascript">
         function x() {
-            var p_options = document.getElementById("voteOptions-p");
-            alert("执行方法x" + p_options.length);
-            if (p_options.length > 2) {
-                alert(p_options.length);
-                for (var i = 2; i < p_options.length; i++) {
+            var voteoptions = document.getElementById("voteoptions").getElementsByTagName("p");
+            if (voteoptions.length > 2) {
+                for (var i = 2; i <= voteoptions.length; i++) {
                     var _a = document.createElement("a");
                     _a.className = "del";
                     _a.setAttribute("href", "javascript:;");
@@ -65,9 +63,12 @@
                         _a.addEventListener("click", DelOption, false);
                     }
                     _a.appendChild(document.createTextNode("删除"));
-                    p_options.appendChild(_a);
+                    voteoptions[i].appendChild(_a);
                 }
             }
+        }
+        window.onload = function (ev) {
+            x();
         }
     </script>
     <script>!function (e) {
@@ -85,7 +86,7 @@
 <div id="navbar" class="wrap">
     <div class="profile">
         您好，${sessionScope.user.name}
-        <span class="return"><a href="<%=path%>/jsp/list.jsp">返回列表</a></span>
+        <span class="return"><a href="<%=path%>/list">返回列表</a></span>
         <span class="addnew"><a href="<%=path%>/jsp/add.jsp">添加新投票</a></span>
     </div>
     <div class="search">
@@ -115,20 +116,15 @@
             </dd>
             <dt>投票选项：</dt>
 
-            <dd id="voteoptions" onload="x()">
+            <dd id="voteoptions">
                 <c:choose>
                     <c:when test="${empty subject.optionList}">
-                        <p id="voteOptions-p">
-                            <input type="text" class="input-text" name="options"/>
-                        </p>
-                        <p id="voteOptions-p">
-                            <input type="text" class="input-text" name="options"/>
-                        </p>
+                        <p><input type="text" class="input-text" name="options"/></p>
+                        <p><input type="text" class="input-text" name="options"/></p>
                     </c:when>
                 </c:choose>
                 <c:forEach items="${subject.optionList}" var="option">
-                    <p id="voteOptions-p"><input type="text" class="input-text" name="options"
-                                                              value="${option.content}"/></p>
+                    <p><input type="text" class="input-text" name="options" value="${option.content}"/></p>
                 </c:forEach>
 
             </dd>
@@ -141,7 +137,7 @@
             <dd class="button">
                 <input type="image" src="<%=path%>/images/button_submit.gif"/>
                 <a href="javascript:" onclick="AddOption()">增加选项</a>
-                <a href="<%=path%>/jsp/list.jsp">取消操作</a>
+                <a href="javascript:history.go(-1);">取消操作</a>
             </dd>
         </dl>
     </form>
