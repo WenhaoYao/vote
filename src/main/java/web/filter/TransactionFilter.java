@@ -25,7 +25,7 @@ public class TransactionFilter implements Filter {
         try {
             JdbcUtil.beginTransaction();
             chain.doFilter(req, resp);
-            JdbcUtil.commitTrascation();
+            JdbcUtil.commitTransaction();
         } catch (SQLException e) {
             try {
                 JdbcUtil.rollTrasaction();

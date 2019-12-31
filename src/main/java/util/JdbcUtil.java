@@ -65,11 +65,11 @@ public class JdbcUtil {
      * 提交事务
      *
      * @throws SQLException
-     * @Title: beginTrascation
+     * @Title: beginTransaction
      * @Description: TODO
      * @return: void
      */
-    public static void commitTrascation() throws SQLException {
+    public static void commitTransaction() throws SQLException {
 //		获取当前线程的事务连接
         Connection connection = con.get();
         if (connection == null) {
